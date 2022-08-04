@@ -1,0 +1,4 @@
+.disable-input{
+    pointer-events: none;
+    background-color: lightgray;
+}

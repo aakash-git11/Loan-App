@@ -8,7 +8,7 @@
     <form [formGroup]="EditLoanForm">
         <div class="form-group">
             <label for="LoanNumber">Loan Number</label>
-            <input type="text" formControlName="LoanNumber" class="form-control" placeholder="Enter a Loan Number">
+            <input type="text" formControlName="LoanNumber" class="form-control disable-input" placeholder="Enter a Loan Number">
             <span class="text-danger" *ngIf="EditLoanForm.controls['LoanNumber'].touched"></span>
         </div>
         <input type="hidden" formControlName="LoanId" >
@@ -50,7 +50,7 @@
                 <button type="submit" class="btn btn-primary" [disabled]="!EditLoanForm.valid" (click)="updateLoanDeatils()">Update</button>
             </div>
             <div class="col-md-1">
-                <button type="submit" class="btn btn-success">Reset</button>
+                <button type="button" class="btn btn-success" (click)="editCancel()">Cancel Edit</button>
             </div>
         </div>
     </form>

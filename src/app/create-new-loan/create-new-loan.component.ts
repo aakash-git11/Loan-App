@@ -49,11 +49,12 @@ export class CreateNewLoanComponent implements OnInit {
   AddNewLoan(data:any){
     this.LoanService.addNewLoan(data).subscribe(res=>{
       console.log(res);
-      alert(res.message);
+      
       if(res.statusCode==400){
-        
+        alert(res.message);
       } 
       else{
+        alert(res.message);
         this.router.navigate(['loandetailsadmin']);
       }    
       

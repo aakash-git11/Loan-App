@@ -29,7 +29,8 @@ export class EditLoanDetailsComponent implements OnInit {
       'LoanTerm': new FormControl(this.EditLoanData.loanTerm, [Validators.required]),
       'LoanAmmount': new FormControl(this.EditLoanData.loanAmmount, [Validators.required])
     });
-    //this.EditLoanForm.get("LoanNumber")?.disable();
+    //this.EditLoanForm.;
+    // this.EditLoanForm.controls['LoanNumber'].disable({onlySelf:true});
   }
 
   updateLoanDeatils() {
@@ -44,6 +45,9 @@ export class EditLoanDetailsComponent implements OnInit {
         alert(res.message);
       }
     })
+  }
+  editCancel(){
+    this.router.navigate(["loandetailsadmin"])
   }
 
 }

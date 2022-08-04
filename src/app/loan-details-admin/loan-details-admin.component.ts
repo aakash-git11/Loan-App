@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoanserviceService } from '../service/loanservice.service';
 
 @Component({
@@ -10,19 +11,34 @@ import { LoanserviceService } from '../service/loanservice.service';
 export class LoanDetailsAdminComponent implements OnInit {
   searchValue: string = "";
   loanDetailsData: any[] = [];
-  constructor(private readonly loanservice: LoanserviceService) {
+  constructor(private readonly loanservice: LoanserviceService,private router :Router) {
 
   }
-  ngOnInit(): void {    
+  ngOnInit(): void {
     this.loanservice.getLoanDetails()
       .subscribe(res => {
         console.log(res);
         this.loanDetailsData = res;
       })
   }
-  populateLoanDeatils(data:any){
+  populateLoanDeatils(data: any) {
     this.loanservice.setLoanDataForEdit(data);
     console.log(data);
-  }  
+  }
+
+  cancelLoan(LoanId: any) {
+    if (confirm("Are you really want to cancel this loan?")) {
+      this.loanservice.cancelLoan(LoanId).subscribe(res => {
+        if (res.statusCode == 200) {
+          alert(res.message);
+          this.router.navigate(['loandetailsadmin']);
+        }
+        else{
+          alert(res.message);
+        }
+      })
+    }
+  }
+
 }
 

@@ -36,6 +36,13 @@ export class LoanserviceService {
     return this.httpClient.post<any>("http://localhost:2891/api/User/userLogin",loginData.value)
   }
 
+  cancelLoan(LoanId:any){
+    console.log(LoanId);
+    return this.httpClient.put<any>("http://localhost:2891/api/Loan/cancelLoan/"+LoanId,{
+      LoanId:LoanId
+    })
+  }
+
   setLoanDataForEdit(loanDetails:any) {
     console.log("in the service"+loanDetails);
     this.loanData = loanDetails;
