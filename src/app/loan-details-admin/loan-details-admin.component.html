@@ -1,0 +1,47 @@
+<app-header></app-header>
+<div class="container">
+  <h4>Loan Details-Admin</h4>
+
+  <div class="row">
+    <div class="col-md-8">
+      <input class="form-control" [(ngModel)]="searchValue" type="text" placeholder="Search..">
+
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-success" routerLink="addnewloan">Add Loan</button>
+    </div>
+  </div>
+  <br>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Loan Number</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Property Address</th>
+        <th>Loan Term</th>
+        <th>Loan Type</th>
+        <th>Loan Ammount</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <tr *ngFor="let item of loanDetailsData | loansearchfilter:searchValue">
+        <td>{{item.loanNumber}}</td>
+        <td>{{item.loanAccountHolderFirstName}}</td>
+        <td>{{item.loanAccountHolderLastName}}</td>
+        <td>{{item.propertyAddress}}</td>
+        <td>{{item.loanTerm}}</td>
+        <td>{{item.loanType}}</td>
+        <td>{{item.loanAmmount}}</td>
+
+        <td>
+          <button class="btn btn-info" routerLink="editloan/{{item.loanId}}"
+            (click)="populateLoanDeatils(item)">Edit</button> |
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
