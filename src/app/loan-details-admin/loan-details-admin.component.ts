@@ -11,7 +11,7 @@ import { LoanserviceService } from '../service/loanservice.service';
 export class LoanDetailsAdminComponent implements OnInit {
   searchValue: string = "";
   loanDetailsData: any[] = [];
-  constructor(private readonly loanservice: LoanserviceService,private router :Router) {
+  constructor(private readonly loanservice: LoanserviceService, private router: Router) {
 
   }
   ngOnInit(): void {
@@ -31,9 +31,14 @@ export class LoanDetailsAdminComponent implements OnInit {
       this.loanservice.cancelLoan(LoanId).subscribe(res => {
         if (res.statusCode == 200) {
           alert(res.message);
+          this.loanservice.getLoanDetails()
+            .subscribe(res => {
+              console.log(res);
+              this.loanDetailsData = res;
+            })
           this.router.navigate(['loandetailsadmin']);
         }
-        else{
+        else {
           alert(res.message);
         }
       })

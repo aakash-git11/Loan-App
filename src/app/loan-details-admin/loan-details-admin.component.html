@@ -42,8 +42,8 @@
         </td>
         <td>
           <button class="btn btn-info" routerLink="editloan/{{item.loanId}}"
-            (click)="populateLoanDeatils(item)">Edit</button> |
-          <button class="btn btn-danger" (click)="cancelLoan(item.loanId)">Cancel Loan</button>
+            (click)="populateLoanDeatils(item)" [disabled]="item.loanStatus==0">Edit</button> |
+          <button class="btn btn-danger" (click)="cancelLoan(item.loanId)" [disabled]="item.loanStatus==0">Cancel Loan</button>
         </td>
       </tr>
     </tbody>

@@ -32,7 +32,24 @@ export class EditLoanDetailsComponent implements OnInit {
     //this.EditLoanForm.;
     // this.EditLoanForm.controls['LoanNumber'].disable({onlySelf:true});
   }
-
+  getErrorLoanAccountHolderFirstName() {
+    return this.EditLoanForm.get('LoanAccountHolderFirstName')?.hasError('required') ? 'LoanAccountHolderFirstName is required' : '';
+  }
+  getErrorLoanAccountHolderLastName() {
+    return this.EditLoanForm.get('LoanAccountHolderLastName')?.hasError('required') ? 'LoanAccountHolderName Lastis required' : '';
+  }
+  getErrorPropertyAddress() {
+    return this.EditLoanForm.get('PropertyAddress')?.hasError('required') ? 'PropertyAddress is required' : '';
+  }
+  getErrorLoanType() {
+    return this.EditLoanForm.get('LoanType')?.hasError('required') ? 'LoanType is required' : '';
+  }
+  getErrorLoanTerm() {
+    return this.EditLoanForm.get('LoanTerm')?.hasError('required') ? 'LoanTerm is required' : '';
+  }
+  getErrorLoanAmmount() {
+    return this.EditLoanForm.get('LoanAmmount')?.hasError('required') ? 'LoanAmmount is required' : '';
+  }
   updateLoanDeatils() {
     console.log(this.EditLoanForm);
     this.loanService.updateLoanDetails(this.EditLoanForm.value).subscribe(res => {
